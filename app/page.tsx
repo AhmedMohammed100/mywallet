@@ -1,30 +1,30 @@
 'use client'
 
-import { Address, address } from "@ton/core";
-import { useTonConnectUI } from "@tonconnect/ui-react";
-import { useCallback, useEffect, useState } from "react";
+import { useState, useEffect, useCallback } from 'react';
+import { useTonConnectUI } from '@tonconnect/ui-react';
+import { Address } from "@ton/core";
 
 export default function Home() {
-  const [TonConnectUI] = useTonConnectUI();
+  const [tonConnectUI] = useTonConnectUI();
   const [tonWalletAddress, setTonWalletAddress] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   const handleWalletConnection = useCallback((address: string) => {
     setTonWalletAddress(address);
-    console.log("Wallet Connected successfully");
+    console.log("Wallet connected successfully!");
     setIsLoading(false);
   }, []);
 
   const handleWalletDisconnection = useCallback(() => {
     setTonWalletAddress(null);
-    console.log("Wallet disconnected successfully");
+    console.log("Wallet disconnected successfully!");
     setIsLoading(false);
   }, []);
 
   useEffect(() => {
     const checkWalletConnection = async () => {
-      if (TonConnectUI.account?.address) {
-        handleWalletConnection(TonConnectUI.account?.address);
+      if (tonConnectUI.account?.address) {
+        handleWalletConnection(tonConnectUI.account?.address);
       } else {
         handleWalletDisconnection();
       }
@@ -32,7 +32,7 @@ export default function Home() {
 
     checkWalletConnection();
 
-    const unsubscribe = TonConnectUI.onStatusChange((wallet) => {
+    const unsubscribe = tonConnectUI.onStatusChange((wallet) => {
       if (wallet) {
         handleWalletConnection(wallet.account.address);
       } else {
@@ -43,21 +43,20 @@ export default function Home() {
     return () => {
       unsubscribe();
     };
-
-  }, [TonConnectUI, handleWalletConnection, handleWalletDisconnection]);
+  }, [tonConnectUI, handleWalletConnection, handleWalletDisconnection]);
 
   const handleWalletAction = async () => {
-    if (TonConnectUI.connected) {
+    if (tonConnectUI.connected) {
       setIsLoading(true);
-      await TonConnectUI.disconnect();
+      await tonConnectUI.disconnect();
     } else {
-      await TonConnectUI.openModal();
+      await tonConnectUI.openModal();
     }
   };
 
   const formatAddress = (address: string) => {
     const tempAddress = Address.parse(address).toString();
-    return `${tempAddress.slice(0,4)}...${tempAddress.slice(-4)}`;
+    return `${tempAddress.slice(0, 4)}...${tempAddress.slice(-4)}`;
   };
 
   if (isLoading) {
@@ -72,7 +71,7 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center">
-      <h1 className="text-4xl font-bold mb-8">TON Wallet Connect</h1>
+      <h1 className="text-4xl font-bold mb-8">TON Connect Demo</h1>
       {tonWalletAddress ? (
         <div className="flex flex-col items-center">
           <p className="mb-4">Connected: {formatAddress(tonWalletAddress)}</p>

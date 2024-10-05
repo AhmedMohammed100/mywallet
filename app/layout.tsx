@@ -1,7 +1,7 @@
 'use client'
 
-import { TonConnectUIProvider } from "@tonconnect/ui-react";
 import "./globals.css";
+import { TonConnectUIProvider } from "@tonconnect/ui-react";
 
 export default function RootLayout({
   children,
@@ -11,11 +11,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <title>Big-Farm Wallet Connect</title>
+        <title>TON Connect Demo</title>
       </head>
       <body>
         <TonConnectUIProvider manifestUrl="https://violet-traditional-rabbit-103.mypinata.cloud/ipfs/QmQJJAdZ2qSwdepvb5evJq7soEBueFenHLX3PoM6tiBffm">
-        {children}
+          {children}
         </TonConnectUIProvider>
       </body>
     </html>

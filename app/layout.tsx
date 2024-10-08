@@ -14,7 +14,7 @@ export default function RootLayout({
         <title>TON Connect Demo</title>
       </head>
       <body>
-        <TonConnectUIProvider manifestUrl="https://apricot-voluntary-emu-723.mypinata.cloud/ipfs/QmdNxmnbXhApfZsCFEKVLnB3g8Gpmq2nBn4jX6w9wNDD4V">
+        <TonConnectUIProvider manifestUrl="https://apricot-voluntary-emu-723.mypinata.cloud/ipfs/QmNibQmBVYGDnXXj98g7xFfE1SB3VjzuUXfLGyGNtE5HR4">
           {children}
         </TonConnectUIProvider>
       </body>

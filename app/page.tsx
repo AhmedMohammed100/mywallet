@@ -4,10 +4,23 @@ import { useState, useEffect, useCallback } from 'react';
 import { useTonConnectUI } from '@tonconnect/ui-react';
 import { Address } from "@ton/core";
 
+import WalletConnect from './WalletConnect';  // Adjust path accordingly
+
+const Page = () => {
+    return (
+        <div>
+            <h1>Welcome to My Wallet App</h1>
+            <WalletConnect />
+        </div>
+    );
+};
+
 export default function Home() {
   const [tonConnectUI] = useTonConnectUI();
   const [tonWalletAddress, setTonWalletAddress] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+
+  Page;
 
   const handleWalletConnection = useCallback((address: string) => {
     setTonWalletAddress(address);

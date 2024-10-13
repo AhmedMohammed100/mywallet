@@ -5,7 +5,7 @@ const WalletConnect = () => {
 
     const connectWallet = () => {
         if (isMobile) {
-            window.location.href = 'tonkeeper://connect/...';  // Replace with your WalletConnect URL
+            window.location.href = 'https://mywallet-blue.vercel.app/';  // Replace with your WalletConnect URL
         } else {
             // Show QR code or connection flow for desktop
         }

@@ -69,7 +69,7 @@ export default function Home() {
 
   const formatAddress = (address: string) => {
     const tempAddress = Address.parse(address).toString();
-    return `${tempAddress.slice(0, 4)}...${tempAddress.slice(-4)}`;
+    return `${tempAddress.slice(0, 3)}...${tempAddress.slice(-3)}`;
   };
 
   if (isLoading) {

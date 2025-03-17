@@ -84,7 +84,7 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center">
-      <h1 className="text-4xl font-bold mb-8">BIGFARM Wallet</h1>
+      <h1 className="text-4xl font-bold mb-8">Ton Wallet Connect</h1>
       {tonWalletAddress ? (
         <div className="flex flex-col items-center">
           <p className="mb-4">Connected: {formatAddress(tonWalletAddress)}</p>
@@ -92,7 +92,7 @@ export default function Home() {
             onClick={handleWalletAction}
             className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
           >
-            Disconnect Wallet
+            Disconnect Ton Wallet
           </button>
         </div>
       ) : (
